@@ -1,0 +1,239 @@
+.appShell {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebarHeader {
+  padding: 16px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebarTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.sidebarSubtitle {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.sidebarNav {
+  padding: 10px 8px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: auto;
+}
+
+.navItem {
+  text-align: left;
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-h);
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  background: var(--social-bg);
+}
+
+.navItem.isActive {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+}
+
+.reader {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.readerHeader {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  padding: 14px 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.readerTitle {
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--text-h);
+}
+
+.readerHint {
+  font-size: 12px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.readerHeaderLeft {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.controls.isCompact .ctrlLabel {
+  display: none;
+}
+
+.ctrl {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+}
+
+.ctrlLabel {
+  font-size: 12px;
+  color: var(--text);
+}
+
+.ctrlSelect {
+  font-size: 12px;
+  color: var(--text-h);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.ctrlRange {
+  width: 110px;
+}
+
+.ctrlValue {
+  font-size: 12px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.panes {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.pane {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+}
+
+.pane:last-child {
+  border-right: none;
+}
+
+.paneHeader {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.paneBody {
+  padding: 18px 20px 64px;
+  overflow: auto;
+  line-height: var(--reader-line-height);
+  font-size: var(--reader-font-size);
+  color: var(--text);
+}
+
+.paneBody > * {
+  max-width: var(--reader-max-width);
+}
+
+.sentence {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0 2px;
+  margin: 0 -2px;
+}
+
+.sentence:hover {
+  background: color-mix(in srgb, var(--accent-bg) 65%, transparent);
+}
+
+.sentence.isActive {
+  background: color-mix(in srgb, var(--accent-bg) 100%, transparent);
+  box-shadow: 0 0 0 1px var(--accent-border) inset;
+}
+
+.paneBody h1 {
+  font-size: 24px;
+  margin: 0 0 12px;
+}
+
+.paneBody p {
+  margin: 0 0 12px;
+}
+
+.missingHint {
+  color: var(--text);
+}
+
+@media (max-width: 1024px) {
+  .appShell {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .panes {
+    grid-template-columns: 1fr;
+  }
+  .pane {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .pane:last-child {
+    border-bottom: none;
+  }
+}
